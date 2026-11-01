@@ -6,8 +6,8 @@
 <title>Bom Brasil Supermercado | Entrega rápida</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--red:#D4001A;--red2:#A80014;--yel:#FFD60A;--yel2:#FFF3A8;--blue:#0A3D9C;--bg:#FFFBEA;--ink:#2B1710;--card:#fff;--line:#F2E3A0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2A0A0D;--ink:#FFF6D6;--card:#3B1216;--line:#6B2A1A}}
+:root{--hl:#D4001A;--bl:#0A3D9C;--red:#D4001A;--red2:#A80014;--yel:#FFD60A;--yel2:#FFF3A8;--blue:#0A3D9C;--bg:#FFFBEA;--ink:#2B1710;--card:#fff;--line:#F2E3A0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2A0A0D;--ink:#FFF6D6;--card:#3B1216;--line:#6B2A1A;--hl:#FF9B8F;--bl:#8DB4FF}}
 html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-size:16px;line-height:1.5}
@@ -35,19 +35,19 @@ header img{width:52px;height:52px;border-radius:50%;flex:none}
 .perk{background:var(--card);border:3px solid var(--yel);border-radius:18px;padding:14px;display:flex;gap:12px;align-items:center;box-shadow:0 6px 0 var(--red)}
 .perk span{font-size:34px}.perk b{display:block;font-family:'Baloo 2';font-size:19px;line-height:1.1}.perk small{opacity:.8}
 main{max-width:1100px;margin:auto;padding:30px 16px 90px}
-.sec{font-size:32px;color:var(--red);margin:6px 0 14px}
+.sec{font-size:32px;color:var(--hl);margin:6px 0 14px}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px;scrollbar-width:none}
-.chip{flex:none;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:99px;padding:8px 16px;font-weight:800}
+.chip{flex:none;border:2px solid var(--hl);background:var(--card);color:var(--hl);border-radius:99px;padding:8px 16px;font-weight:800}
 .chip[aria-pressed=true]{background:var(--red);color:#fff}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px}
 .card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:12px;display:flex;flex-direction:column;position:relative}
 .card .em{font-size:58px;text-align:center;background:var(--yel2);border-radius:14px;padding:10px 0;margin-bottom:8px}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .card .em{background:#552028}}
-.marca{font-weight:800;font-size:12px;color:var(--blue);margin-bottom:2px}
+.marca{font-weight:800;font-size:12px;color:var(--bl);margin-bottom:2px}
 .bsel{width:100%;margin:4px 0 2px;padding:8px;border:2px solid var(--blue);border-radius:10px;font:inherit;font-weight:700;font-size:14px;background:var(--bg);color:var(--ink)}
 .card h3{font-size:17px;font-style:normal;line-height:1.15;flex:1}
 .card small{opacity:.75}
-.price{font-family:'Baloo 2';font-weight:800;font-size:24px;color:var(--red);margin:4px 0}
+.price{font-family:'Baloo 2';font-weight:800;font-size:24px;color:var(--hl);margin:4px 0}
 .tag{position:absolute;top:8px;left:8px;background:var(--blue);color:#fff;font-weight:800;font-size:12px;padding:3px 9px;border-radius:99px}
 .add{background:var(--red);color:#fff;border:0;border-radius:12px;padding:10px;font-weight:800;box-shadow:0 3px 0 var(--red2)}
 .qty{display:flex;align-items:center;justify-content:space-between;background:var(--yel);border-radius:12px;padding:3px}
@@ -60,6 +60,11 @@ main{max-width:1100px;margin:auto;padding:30px 16px 90px}
 .gi input{width:100%;min-width:0;border:0;background:transparent;font:inherit;font-weight:800;color:var(--ink);padding:6px 0}
 .gi span{font-size:13px;opacity:.75}
 .nota{font-size:12px;opacity:.75;text-align:center}
+a.go{display:block;text-align:center;text-decoration:none}
+.cp{background:var(--yel);color:var(--red2);border:0;border-radius:12px;padding:10px;font-weight:800}
+.fb{display:grid;gap:8px;background:var(--yel2);color:#4a3a00;border-radius:12px;padding:10px;font-size:14px}
+.fb textarea{width:100%;font:inherit;font-size:13px;border-radius:8px;border:1px solid #c9a400;padding:6px;background:#fff;color:#2B1710}
+.err{background:#FFD9D9;color:#8A0010;border-radius:10px;padding:8px 10px;font-weight:700;font-size:14px}
 .empty{grid-column:1/-1;text-align:center;padding:30px;opacity:.8}
 footer{background:var(--red2);color:#fff;text-align:center;padding:26px 16px calc(26px + env(safe-area-inset-bottom,0px))}
 .scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:40;display:none}
@@ -72,9 +77,9 @@ aside.on{transform:none}
 .row{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line)}
 .row .e{font-size:30px}.row small{display:block;opacity:.75}
 .row .qty{width:124px}.row .qty button{width:30px;height:28px}
-.af{padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:3px solid var(--yel);display:grid;gap:8px}
+.af{max-height:65vh;overflow:auto;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:3px solid var(--yel);display:grid;gap:8px}
 .af input,.af select{width:100%;padding:11px 12px;border:2px solid var(--line);border-radius:10px;font:inherit;background:var(--bg);color:var(--ink)}
-.tot{display:flex;justify-content:space-between}.tot.big{font-family:'Baloo 2';font-size:24px;font-weight:800;color:var(--red)}
+.tot{display:flex;justify-content:space-between}.tot.big{font-family:'Baloo 2';font-size:24px;font-weight:800;color:var(--hl)}
 .free{background:var(--yel2);color:#6A5400;border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
 .go{background:#128C3E;color:#fff;border:0;border-radius:14px;padding:14px;font-weight:800;font-size:18px;box-shadow:0 4px 0 #0B5E29}
 .go:disabled{opacity:.5}
@@ -121,7 +126,7 @@ aside.on{transform:none}
 <footer>
   <h2 class="disp" style="font-size:28px;color:var(--yel)">Bom Brasil</h2>
   <div>Pedidos e entregas todos os dias · Horário: 7h às 20h</div>
-  <small>Endereço da loja · WhatsApp +55 (31) 9848-1333</small>
+  <small>Endereço da loja · WhatsApp (00) 00000-0000</small>
 </footer>
 
 <div class="scrim" id="scrim"></div>
@@ -129,12 +134,86 @@ aside.on{transform:none}
   <div class="ah"><h2>Meu carrinho</h2><button class="x" id="close" aria-label="Fechar carrinho">✕</button></div>
   <div class="ab" id="items"></div>
   <div class="af" id="foot"></div>
-</aside>AC
+</aside>
 
 <script>
 // ===== CONFIGURAÇÕES DA LOJA (WhatsApp, taxas, mínimo) =====
-const CFG={nome:"Bom Brasil",zap:"https://wa.me/message/HALX3NTOW7NSP1",/* link do WhatsApp da loja */ minimo:30,gratisAcima:120,
- bairros:[["Centro",5],["Bairros próximos",8],["Mais distantes",12]]};
+const CFG={nome:"Bom Brasil",numero:"", /* COLOQUE AQUI o número do WhatsApp da loja: 55 + DDD + número, só dígitos. Ex: "5531999999999". Com o número, o pedido abre pronto na conversa. */
+ zap:"https://wa.me/message/HALX3NTOW7NSP1", /* link usado enquanto o número acima estiver vazio */ minimo:30,gratisAcima:120,
+ /* BAIRROS COM TAXA: o cliente digita o bairro; se estiver nesta lista, usa a taxa dele.
+   Se digitar outro bairro, usa a taxaPadrao. Para adicionar: ["Nome do bairro", taxa] */
+ taxaPadrao:8,
+ bairros:[
+  ["Acamari",8],
+  ["Arduíno Bolívar",8],
+  ["Área Rural de Viçosa",8],
+  ["Barrinha",8],
+  ["Bela Vista",8],
+  ["Belvedere",8],
+  ["Betânia",8],
+  ["Boa Vista",8],
+  ["Bom Jesus",8],
+  ["Bom Sucesso",8],
+  ["Bosque Acamari",8],
+  ["Buieié",8],
+  ["Cachoeira de Santa Cruz",8],
+  ["Campus Universitário",8],
+  ["Centro",8],
+  ["Cidade Jardim",8],
+  ["Cidade Nova",8],
+  ["Clélia Bernardes",8],
+  ["Conceição",8],
+  ["Condomínio Residencial Octávio Pacheco",8],
+  ["Estrelas",8],
+  ["Fátima",8],
+  ["Fuad Chequer",8],
+  ["Inácio Martins",8],
+  ["Inconfidência",8],
+  ["Jardins do Vale",8],
+  ["JK",8],
+  ["João Braz da Costa Val",8],
+  ["João Mariano",8],
+  ["Júlia Mollá",8],
+  ["Laranjal",8],
+  ["Liberdade",8],
+  ["Liberdade 1",8],
+  ["Liberdade 2",8],
+  ["Lourdes",8],
+  ["Maria Eugênia",8],
+  ["Monte Verde",8],
+  ["Morada do Sol",8],
+  ["Morada do Sol II",8],
+  ["Nova Era",8],
+  ["Nova Viçosa",8],
+  ["Novo Silvestre",8],
+  ["Paraíso",8],
+  ["Parque do Ipê",8],
+  ["Paula",8],
+  ["Pedreira",8],
+  ["Prefeito Moacir Andrade",8],
+  ["Quintas Guimarães Ferreira",8],
+  ["Ramos",8],
+  ["Recanto da Serra",8],
+  ["Residencial Silvestre",8],
+  ["Romão dos Reis",8],
+  ["Rua Nova",8],
+  ["Sagrada Família",8],
+  ["Sagrados Corações",8],
+  ["Santa Clara",8],
+  ["São Francisco de Assis",8],
+  ["São José",8],
+  ["São José do Triunfo",8],
+  ["São Sebastião",8],
+  ["Serra Verde",8],
+  ["Silvestre",8],
+  ["Santo Antônio",8],
+  ["União",8],
+  ["Vale do Sol",8],
+  ["Vau Açu",8],
+  ["Vereda do Bosque",8],
+  ["Vila Alves",8],
+  ["Violeira",8],
+ ]};
 
 // =====================================================
 //  LISTA DE PRODUTOS  (1 produto por linha)
@@ -201,7 +280,8 @@ const PRODUTOS=[
 const P=PRODUTOS.map((x,i)=>({id:i,n:x.nome,c:x.categoria,u:x.unidade,e:x.emoji,o:x.oferta,m:x.marcas.map(a=>({b:a[0],p:a[1]}))}));
 const R=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 const $=id=>document.getElementById(id);
-let cart={},sel={},cat="Todos",term="",bairro=0;
+let cart={},sel={},cat="Todos",term="",bairroTxt="";
+const norm=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
 const item=k=>{const[i,m]=k.split("|");const p=P[i];return p&&p.m[m]?{p,m:p.m[m]}:null};
 try{const c=JSON.parse(localStorage.getItem("bb_cart2")||"{}");for(const k in c)if(item(k))cart[k]=c[k]}catch(e){}
 const save=()=>{try{localStorage.setItem("bb_cart2",JSON.stringify(cart))}catch(e){}};
@@ -229,7 +309,14 @@ function grid(){
   $("grid").innerHTML=l.length?l.map(card).join(""):'<div class="empty">Não achou? Chame a gente no WhatsApp que a gente separa para você.</div>';
 }
 function sum(){return Object.entries(cart).reduce((s,[k,q])=>s+line(k,q),0)}
-function fee(s){return s>=CFG.gratisAcima?0:CFG.bairros[bairro][1]}
+const achaBairro=()=>CFG.bairros.find(x=>norm(x[0])===norm(bairroTxt));
+function fee(s){return s>=CFG.gratisAcima?0:(achaBairro()?achaBairro()[1]:CFG.taxaPadrao)}
+function totais(){
+  if(!$("tEnt"))return;
+  const s=sum(),f=fee(s);
+  $("tEnt").textContent=f?R(f):"Grátis";$("tTot").textContent=R(s+f);
+  $("bhint").textContent=bairroTxt.trim()&&!achaBairro()&&s<CFG.gratisAcima?"Bairro fora da lista: taxa padrão de "+R(CFG.taxaPadrao)+". Confirmamos o valor no WhatsApp.":"";
+}
 function drawer(){
   const ks=Object.keys(cart),n=ks.reduce((s,k)=>s+cart[k],0),s=sum();
   $("cnt").textContent=n;
@@ -239,14 +326,17 @@ function drawer(){
    <div class="free">${falta>0?`Falta ${R(falta)} para entrega grátis!`:"🎉 Entrega grátis neste pedido!"}</div>
    <input id="nome" placeholder="Seu nome" autocomplete="name" value="${$("nome")?.value||""}">
    <input id="end" placeholder="Rua, número e complemento" autocomplete="street-address" value="${$("end")?.value||""}">
-   <select id="bai" aria-label="Região">${CFG.bairros.map((b,j)=>`<option value="${j}" ${j==bairro?"selected":""}>${b[0]} (${R(b[1])})</option>`).join("")}</select>
+   <input id="bai" list="blist" placeholder="Seu bairro" autocomplete="off" value="${bairroTxt.replace(/"/g,"&quot;")}"><datalist id="blist">${CFG.bairros.map(b=>`<option value="${b[0]}">`).join("")}</datalist><small class="nota" id="bhint"></small>
    <select id="pag" aria-label="Pagamento"><option>Pix</option><option>Cartão na entrega</option><option>Dinheiro</option></select>
    <div class="tot"><span>Produtos</span><span>${R(s)}</span></div>
-   <div class="tot"><span>Entrega</span><span>${f?R(f):"Grátis"}</span></div>
-   <div class="tot big"><span>Total</span><span>${R(s+f)}</span></div>
+   <div class="tot"><span>Entrega</span><span id="tEnt">${f?R(f):"Grátis"}</span></div>
+   <div class="tot big"><span>Total</span><span id="tTot">${R(s+f)}</span></div>
    <button class="go" id="send" ${s<CFG.minimo?"disabled":""}>${s<CFG.minimo?`Pedido mínimo ${R(CFG.minimo)}`:"Enviar pedido pelo WhatsApp"}</button><small class="nota">A mensagem do pedido é copiada automaticamente. Se não aparecer pronta no WhatsApp, é só colar.</small>`:"";
 }
-function render(){grid();drawer();save()}
+function render(){grid();drawer();totais();save()}
+function aviso(t){let e=$("err");if(!e){e=document.createElement("div");e.id="err";e.className="err";$("send").before(e)}e.textContent=t}
+function velho(){const a=$("fbtxt");if(a){a.select();try{document.execCommand("copy")}catch(e){}}}
+function copiar(t){try{navigator.clipboard.writeText(t).catch(velho)}catch(e){velho()}}
 function open(v){$("drawer").classList.toggle("on",v);$("scrim").classList.toggle("on",v);$("drawer").setAttribute("aria-hidden",!v)}
 document.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
@@ -256,22 +346,30 @@ document.addEventListener("click",e=>{
     if(!(g>=50)){alert("Informe pelo menos 50 gramas.");return}
     cart[k]=(cart[k]||0)+Math.min(g,20000);render();return}
   if(b.dataset.d){const k=b.dataset.k,q=(cart[k]||0)+ +b.dataset.d;q>0?cart[k]=q:delete cart[k];render();return}
+  if(b.id==="copy"){copiar($("fbtxt").value);b.textContent="Pedido copiado ✓";return}
   if(b.id==="open")open(true);
   if(b.id==="close")open(false);
   if(b.id==="send"){
-    const nome=$("nome").value.trim(),end=$("end").value.trim();
-    if(!nome||!end){alert("Preencha seu nome e endereço para a entrega.");return}
+    const nome=$("nome").value.trim(),end=$("end").value.trim(),bai=$("bai").value.trim();
+    if(!nome||!end||!bai){aviso("Preencha seu nome, endereço e bairro para a entrega.");return}
     const s=sum(),f=fee(s);
     const lin=Object.keys(cart).map(k=>{const{p,m}=item(k);return `• ${p.u==="kg"?fmtQ(p,cart[k])+" de":cart[k]+"x"} ${p.n} (${m.b}) — ${R(line(k,cart[k]))}`}).join("\n");
-    const msg=`Olá, ${CFG.nome}! Quero fazer um pedido:\n\n${lin}\n\nProdutos: ${R(s)}\nEntrega (${CFG.bairros[bairro][0]}): ${f?R(f):"Grátis"}\n*Total: ${R(s+f)}*\nPagamento: ${$("pag").value}\n\nNome: ${nome}\nEndereço: ${end}`;
-    try{navigator.clipboard.writeText(msg)}catch(e){}
-    window.open(`${CFG.zap}?text=${encodeURIComponent(msg)}`,"_blank");
+    const msg=`Olá, ${CFG.nome}! Quero fazer um pedido:\n\n${lin}\n\nProdutos: ${R(s)}\nBairro: ${bai}\nEntrega: ${f?R(f):"Grátis"}\n*Total: ${R(s+f)}*\nPagamento: ${$("pag").value}\n\nNome: ${nome}\nEndereço: ${end}`;
+    const url=`${CFG.numero?"https://wa.me/"+CFG.numero:CFG.zap}?text=${encodeURIComponent(msg)}`;
+    copiar(msg);
+    const w=window.open(url,"_blank");
+    if(!w){ // navegador bloqueou a abertura automática: mostra botão para abrir manualmente
+      $("fb")?.remove();
+      const seguro=msg.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+      $("foot").insertAdjacentHTML("beforeend",`<div id="fb" class="fb"><b>Falta só um passo!</b><span>O navegador não abriu o WhatsApp sozinho. Toque no botão verde e cole o pedido na conversa.</span><a class="go" href="${url}" target="_blank" rel="noopener">Abrir WhatsApp</a><button class="cp" id="copy">Copiar pedido</button><textarea id="fbtxt" readonly rows="4">${seguro}</textarea></div>`);
+      $("fb").scrollIntoView({block:"nearest"});
+    }
   }
 });
 document.addEventListener("change",e=>{
-  if(e.target.id==="bai"){bairro=+e.target.value;drawer()}
   if(e.target.classList.contains("bsel")){const id=e.target.dataset.pid;sel[id]=+e.target.value;$("c"+id).outerHTML=card(P[id]);document.querySelector(`#c${id} .bsel`).focus()}
 });
+document.addEventListener("input",e=>{if(e.target.id==="bai"){bairroTxt=e.target.value;totais()}});
 $("scrim").onclick=()=>open(false);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")open(false)});
 $("q").addEventListener("input",e=>{term=e.target.value;grid()});
