@@ -331,7 +331,7 @@ function drawer(){
    <div class="tot"><span>Produtos</span><span>${R(s)}</span></div>
    <div class="tot"><span>Entrega</span><span id="tEnt">${f?R(f):"Grátis"}</span></div>
    <div class="tot big"><span>Total</span><span id="tTot">${R(s+f)}</span></div>
-   <button class="go" id="send" ${s<CFG.minimo?"disabled":""}>${s<CFG.minimo?`Pedido mínimo ${R(CFG.minimo)}`:"Enviar pedido pelo WhatsApp"}</button><small class="nota">A mensagem do pedido é copiada automaticamente. Se não aparecer pronta no WhatsApp, é só colar.</small>`:"";
+   <button class="go" id="send" ${s<CFG.minimo?"disabled":""}>${s<CFG.minimo?`Pedido mínimo ${R(CFG.minimo)}`:"Enviar pedido pelo WhatsApp"}</button><small class="nota">Você será levado ao WhatsApp da loja com o pedido pronto. Se a mensagem não aparecer, é só colar: já copiamos para você.</small>`:"";
 }
 function render(){grid();drawer();totais();save()}
 function aviso(t){let e=$("err");if(!e){e=document.createElement("div");e.id="err";e.className="err";$("send").before(e)}e.textContent=t}
@@ -357,7 +357,8 @@ document.addEventListener("click",e=>{
     const msg=`Olá, ${CFG.nome}! Quero fazer um pedido:\n\n${lin}\n\nProdutos: ${R(s)}\nBairro: ${bai}\nEntrega: ${f?R(f):"Grátis"}\n*Total: ${R(s+f)}*\nPagamento: ${$("pag").value}\n\nNome: ${nome}\nEndereço: ${end}`;
     const url=`${CFG.numero?"https://wa.me/"+CFG.numero:CFG.zap}?text=${encodeURIComponent(msg)}`;
     copiar(msg);
-    const w=window.open(url,"_blank");
+    let w=window.open(url,"_blank");
+    if(!w){try{window.top.location.href=url;w=true}catch(err){}}
     if(!w){ // navegador bloqueou a abertura automática: mostra botão para abrir manualmente
       $("fb")?.remove();
       const seguro=msg.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
