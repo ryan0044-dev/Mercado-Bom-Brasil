@@ -59,6 +59,7 @@ main{max-width:1100px;margin:auto;padding:30px 16px 90px}
 .gi{display:flex;align-items:center;gap:6px;border:2px solid var(--line);border-radius:10px;padding:2px 10px;background:var(--bg)}
 .gi input{width:100%;min-width:0;border:0;background:transparent;font:inherit;font-weight:800;color:var(--ink);padding:6px 0}
 .gi span{font-size:13px;opacity:.75}
+.nota{font-size:12px;opacity:.75;text-align:center}
 .empty{grid-column:1/-1;text-align:center;padding:30px;opacity:.8}
 footer{background:var(--red2);color:#fff;text-align:center;padding:26px 16px calc(26px + env(safe-area-inset-bottom,0px))}
 .scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:40;display:none}
@@ -120,7 +121,7 @@ aside.on{transform:none}
 <footer>
   <h2 class="disp" style="font-size:28px;color:var(--yel)">Bom Brasil</h2>
   <div>Pedidos e entregas todos os dias · Horário: 7h às 20h</div>
-  <small>Endereço da loja · WhatsApp (00) 00000-0000</small>
+  <small>Endereço da loja · WhatsApp +55 (31) 9848-1333</small>
 </footer>
 
 <div class="scrim" id="scrim"></div>
@@ -128,11 +129,11 @@ aside.on{transform:none}
   <div class="ah"><h2>Meu carrinho</h2><button class="x" id="close" aria-label="Fechar carrinho">✕</button></div>
   <div class="ab" id="items"></div>
   <div class="af" id="foot"></div>
-</aside>
+</aside>AC
 
 <script>
 // ===== CONFIGURAÇÕES DA LOJA (WhatsApp, taxas, mínimo) =====
-const CFG={nome:"Bom Brasil",whats:"5500000000000",minimo:30,gratisAcima:120,
+const CFG={nome:"Bom Brasil",zap:"https://wa.me/message/HALX3NTOW7NSP1",/* link do WhatsApp da loja */ minimo:30,gratisAcima:120,
  bairros:[["Centro",5],["Bairros próximos",8],["Mais distantes",12]]};
 
 // =====================================================
@@ -243,7 +244,7 @@ function drawer(){
    <div class="tot"><span>Produtos</span><span>${R(s)}</span></div>
    <div class="tot"><span>Entrega</span><span>${f?R(f):"Grátis"}</span></div>
    <div class="tot big"><span>Total</span><span>${R(s+f)}</span></div>
-   <button class="go" id="send" ${s<CFG.minimo?"disabled":""}>${s<CFG.minimo?`Pedido mínimo ${R(CFG.minimo)}`:"Enviar pedido pelo WhatsApp"}</button>`:"";
+   <button class="go" id="send" ${s<CFG.minimo?"disabled":""}>${s<CFG.minimo?`Pedido mínimo ${R(CFG.minimo)}`:"Enviar pedido pelo WhatsApp"}</button><small class="nota">A mensagem do pedido é copiada automaticamente. Se não aparecer pronta no WhatsApp, é só colar.</small>`:"";
 }
 function render(){grid();drawer();save()}
 function open(v){$("drawer").classList.toggle("on",v);$("scrim").classList.toggle("on",v);$("drawer").setAttribute("aria-hidden",!v)}
@@ -263,7 +264,8 @@ document.addEventListener("click",e=>{
     const s=sum(),f=fee(s);
     const lin=Object.keys(cart).map(k=>{const{p,m}=item(k);return `• ${p.u==="kg"?fmtQ(p,cart[k])+" de":cart[k]+"x"} ${p.n} (${m.b}) — ${R(line(k,cart[k]))}`}).join("\n");
     const msg=`Olá, ${CFG.nome}! Quero fazer um pedido:\n\n${lin}\n\nProdutos: ${R(s)}\nEntrega (${CFG.bairros[bairro][0]}): ${f?R(f):"Grátis"}\n*Total: ${R(s+f)}*\nPagamento: ${$("pag").value}\n\nNome: ${nome}\nEndereço: ${end}`;
-    window.open(`https://wa.me/${CFG.whats}?text=${encodeURIComponent(msg)}`,"_blank");
+    try{navigator.clipboard.writeText(msg)}catch(e){}
+    window.open(`${CFG.zap}?text=${encodeURIComponent(msg)}`,"_blank");
   }
 });
 document.addEventListener("change",e=>{
