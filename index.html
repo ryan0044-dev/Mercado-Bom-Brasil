@@ -331,9 +331,25 @@ function drawer(){
    <div class="tot"><span>Produtos</span><span>${R(s)}</span></div>
    <div class="tot"><span>Entrega</span><span id="tEnt">${f?R(f):"Grátis"}</span></div>
    <div class="tot big"><span>Total</span><span id="tTot">${R(s+f)}</span></div>
-   <button class="go" id="send" ${s<CFG.minimo?"disabled":""}>${s<CFG.minimo?`Pedido mínimo ${R(CFG.minimo)}`:"Enviar pedido pelo WhatsApp"}</button><small class="nota">Você será levado ao WhatsApp da loja com o pedido pronto. Se a mensagem não aparecer, é só colar: já copiamos para você.</small>`:"";
+   ${s<CFG.minimo?`<button class="go" disabled>Pedido mínimo ${R(CFG.minimo)}</button>`:`<a class="go" id="send" href="${CFG.zap}" target="_blank" rel="noopener">Enviar pedido pelo WhatsApp</a>`}<small class="nota">Você será levado ao WhatsApp da loja com o pedido pronto. Se a mensagem não aparecer, é só colar: já copiamos para você.</small>`:"";
 }
-function render(){grid();drawer();totais();save()}
+function render(){grid();drawer();totais();linkZap();save()}
+function pedido(){
+  const nome=($("nome")?.value||"").trim(),end=($("end")?.value||"").trim(),bai=($("bai")?.value||"").trim();
+  const s=sum(),f=fee(s);
+  const lin=Object.keys(cart).map(k=>{const{p,m}=item(k);return `• ${p.u==="kg"?fmtQ(p,cart[k])+" de":cart[k]+"x"} ${p.n} (${m.b}) — ${R(line(k,cart[k]))}`}).join("\n");
+  const msg=`Olá, ${CFG.nome}! Quero fazer um pedido:\n\n${lin}\n\nProdutos: ${R(s)}\nBairro: ${bai}\nEntrega: ${f?R(f):"Grátis"}\n*Total: ${R(s+f)}*\nPagamento: ${$("pag")?.value||""}\n\nNome: ${nome}\nEndereço: ${end}`;
+  // com número: abre a conversa já com o pedido escrito. Sem número: abre o link da loja (o pedido já foi copiado)
+  const url=CFG.numero?`https://wa.me/${CFG.numero}?text=${encodeURIComponent(msg)}`:CFG.zap;
+  return{nome,end,bai,msg,url};
+}
+function linkZap(){const a=$("send");if(a)a.href=pedido().url}
+document.addEventListener("click",e=>{
+  const a=e.target.closest("a#send");if(!a)return;
+  const p=pedido();
+  if(!p.nome||!p.end||!p.bai){e.preventDefault();aviso("Preencha seu nome, endereço e bairro para a entrega.");return}
+  a.href=p.url;copiar(p.msg); // o clique segue normalmente para o WhatsApp
+});
 function aviso(t){let e=$("err");if(!e){e=document.createElement("div");e.id="err";e.className="err";$("send").before(e)}e.textContent=t}
 function velho(){const a=$("fbtxt");if(a){a.select();try{document.execCommand("copy")}catch(e){}}}
 function copiar(t){try{navigator.clipboard.writeText(t).catch(velho)}catch(e){velho()}}
@@ -349,28 +365,11 @@ document.addEventListener("click",e=>{
   if(b.id==="copy"){copiar($("fbtxt").value);b.textContent="Pedido copiado ✓";return}
   if(b.id==="open")open(true);
   if(b.id==="close")open(false);
-  if(b.id==="send"){
-    const nome=$("nome").value.trim(),end=$("end").value.trim(),bai=$("bai").value.trim();
-    if(!nome||!end||!bai){aviso("Preencha seu nome, endereço e bairro para a entrega.");return}
-    const s=sum(),f=fee(s);
-    const lin=Object.keys(cart).map(k=>{const{p,m}=item(k);return `• ${p.u==="kg"?fmtQ(p,cart[k])+" de":cart[k]+"x"} ${p.n} (${m.b}) — ${R(line(k,cart[k]))}`}).join("\n");
-    const msg=`Olá, ${CFG.nome}! Quero fazer um pedido:\n\n${lin}\n\nProdutos: ${R(s)}\nBairro: ${bai}\nEntrega: ${f?R(f):"Grátis"}\n*Total: ${R(s+f)}*\nPagamento: ${$("pag").value}\n\nNome: ${nome}\nEndereço: ${end}`;
-    const url=`${CFG.numero?"https://wa.me/"+CFG.numero:CFG.zap}?text=${encodeURIComponent(msg)}`;
-    copiar(msg);
-    let w=window.open(url,"_blank");
-    if(!w){try{window.top.location.href=url;w=true}catch(err){}}
-    if(!w){ // navegador bloqueou a abertura automática: mostra botão para abrir manualmente
-      $("fb")?.remove();
-      const seguro=msg.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-      $("foot").insertAdjacentHTML("beforeend",`<div id="fb" class="fb"><b>Falta só um passo!</b><span>O navegador não abriu o WhatsApp sozinho. Toque no botão verde e cole o pedido na conversa.</span><a class="go" href="${url}" target="_blank" rel="noopener">Abrir WhatsApp</a><button class="cp" id="copy">Copiar pedido</button><textarea id="fbtxt" readonly rows="4">${seguro}</textarea></div>`);
-      $("fb").scrollIntoView({block:"nearest"});
-    }
-  }
 });
 document.addEventListener("change",e=>{
   if(e.target.classList.contains("bsel")){const id=e.target.dataset.pid;sel[id]=+e.target.value;$("c"+id).outerHTML=card(P[id]);document.querySelector(`#c${id} .bsel`).focus()}
 });
-document.addEventListener("input",e=>{if(e.target.id==="bai"){bairroTxt=e.target.value;totais()}});
+document.addEventListener("input",e=>{if(e.target.id==="bai"){bairroTxt=e.target.value;totais()}if(["nome","end","bai"].includes(e.target.id))linkZap()});
 $("scrim").onclick=()=>open(false);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")open(false)});
 $("q").addEventListener("input",e=>{term=e.target.value;grid()});
