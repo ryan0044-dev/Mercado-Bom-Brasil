@@ -242,7 +242,7 @@ const PRODUTOS=[
   {nome:"Pão de forma",   categoria:"Padaria", unidade:"pacote",  emoji:"🍞", oferta:false, marcas:[["Wickbold",8.50],["Pullman",9.90],["Seven Boys",7.49],["Plus Vita",8.90]]},
 
   // ---------- AÇOUGUE ----------
-  {nome:"Contrafilé",       categoria:"Açougue", unidade:"kg", emoji:"🥩", oferta:false, marcas:[["Açougue Bom Brasil",44.90],["Friboi",49.90]]},
+  //{nome:"Contrafilé",       categoria:"Açougue", unidade:"kg", emoji:"🥩", oferta:false, marcas:[["Açougue Bom Brasil",44.90],["Friboi",49.90]]},
   {nome:"Frango inteiro",   categoria:"Açougue", unidade:"kg", emoji:"🍗", oferta:true,  marcas:[["Sadia",12.90],["Seara",11.90],["Perdigão",12.50]]},
   {nome:"Linguiça toscana", categoria:"Açougue", unidade:"kg", emoji:"🌭", oferta:false, marcas:[["Seara",19.90],["Sadia",21.90],["Perdigão",20.90]]},
 
@@ -264,18 +264,18 @@ const PRODUTOS=[
   // ---------- BEBIDAS ----------
   {nome:"Refrigerante 2L",    categoria:"Bebidas", unidade:"garrafa", emoji:"🥤", oferta:true,  marcas:[["Coca-Cola",9.49],["Pepsi",7.99],["Guaraná Antarctica",8.49],["Fanta",8.29]]},
   {nome:"Suco de uva 1L",     categoria:"Bebidas", unidade:"caixa",   emoji:"🍇", oferta:false, marcas:[["Tial",8.99],["Maguary",7.99]]},
-  {nome:"Água mineral 1,5L",  categoria:"Bebidas", unidade:"garrafa", emoji:"💧", oferta:false, marcas:[["Crystal",2.99],["Bonafont",3.49],["Minalba",3.29]]},
-  {nome:"Cerveja lata 350ml", categoria:"Bebidas", unidade:"lata",    emoji:"🍺", oferta:false, marcas:[["Skol",3.79],["Brahma",3.99],["Heineken",5.99]]},
+  //{nome:"Água mineral 1,5L",  categoria:"Bebidas", unidade:"garrafa", emoji:"💧", oferta:false, marcas:[["Crystal",2.99],["Bonafont",3.49],["Minalba",3.29]]},
+  //{nome:"Cerveja lata 350ml", categoria:"Bebidas", unidade:"lata",    emoji:"🍺", oferta:false, marcas:[["Skol",3.79],["Brahma",3.99],["Heineken",5.99]]},
 
   // ---------- LIMPEZA ----------
   {nome:"Detergente",        categoria:"Limpeza", unidade:"unidade", emoji:"🧴", oferta:false, marcas:[["Ypê",2.49],["Limpol",2.69],["Minuano",2.29]]},
-  {nome:"Sabão em pó 1kg",   categoria:"Limpeza", unidade:"caixa",   emoji:"🧼", oferta:false, marcas:[["Omo",11.90],["Brilhante",9.90],["Ariel",13.90]]},
-  {nome:"Água sanitária 2L", categoria:"Limpeza", unidade:"garrafa", emoji:"🧽", oferta:false, marcas:[["Qboa",5.99],["Candura",5.49],["Ypê",6.29]]},
+  //{nome:"Sabão em pó 1kg",   categoria:"Limpeza", unidade:"caixa",   emoji:"🧼", oferta:false, marcas:[["Omo",11.90],["Brilhante",9.90],["Ariel",13.90]]},
+  //{nome:"Água sanitária 2L", categoria:"Limpeza", unidade:"garrafa", emoji:"🧽", oferta:false, marcas:[["Qboa",5.99],["Candura",5.49],["Ypê",6.29]]},
 
   // ---------- HIGIENE ----------
   {nome:"Papel higiênico 12un", categoria:"Higiene", unidade:"pacote",  emoji:"🧻", oferta:false, marcas:[["Neve",16.90],["Personal",14.90],["Scott",17.90]]},
-  {nome:"Sabonete",             categoria:"Higiene", unidade:"unidade", emoji:"🧼", oferta:false, marcas:[["Lux",1.99],["Protex",2.49],["Dove",2.99]]},
-  {nome:"Creme dental",         categoria:"Higiene", unidade:"unidade", emoji:"🪥", oferta:false, marcas:[["Colgate",4.49],["Oral-B",4.99],["Sorriso",3.99]]},
+  //{nome:"Sabonete",             categoria:"Higiene", unidade:"unidade", emoji:"🧼", oferta:false, marcas:[["Lux",1.99],["Protex",2.49],["Dove",2.99]]},
+  //{nome:"Creme dental",         categoria:"Higiene", unidade:"unidade", emoji:"🪥", oferta:false, marcas:[["Colgate",4.49],["Oral-B",4.99],["Sorriso",3.99]]},
 ];
 // ===== (daqui para baixo você não precisa mexer) =====
 const P=PRODUTOS.map((x,i)=>({id:i,n:x.nome,c:x.categoria,u:x.unidade,e:x.emoji,o:x.oferta,m:x.marcas.map(a=>({b:a[0],p:a[1]}))}));
