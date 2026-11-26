@@ -271,6 +271,9 @@ aside.on{transform:none;visibility:visible;transition-delay:0s}
   .sortbar{width:100%;margin-top:6px}.sortbar button{flex:1;padding:8px 6px}
   .wafab{bottom:calc(86px + env(safe-area-inset-bottom,0px));right:14px;width:52px;height:52px}
   #toast{bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+  /* fotos inteiras dentro do quadrado, sem cortar */
+.card .em img.ph,.oe img.ph,.row .e img.ph{object-fit:contain;background:#fff;padding:8px}
+.oe img.ph,.row .e img.ph{padding:3px}
 }
 </style>
 </head>
@@ -466,7 +469,7 @@ const PRODUTOS=[
 
   // ---------- LATICÍNIOS ----------
   {nome:"Leite integral 1L", categoria:"Laticínios", unidade:"caixa", emoji:"🥛", foto:"fotos/leite.png", oferta:false, marcas:[["Piracanjuba",5.19],["Italac",4.79],["Parmalat",5.49],["Itambé",5.29]]},
-  {nome:"Queijo mussarela",  categoria:"Laticínios", unidade:"kg",    emoji:"🧀", foto:"fotos/mussarela.png", oferta:false, marcas:[["Tirolez",42.90],["Président",46.90],["Fatiado da Casa",38.90]]},
+  {nome:"Queijo mussarela",  categoria:"Laticínios", unidade:"kg",    emoji:"🧀", foto:"fotos/mussarela.png", oferta:false, marcas:[["Ita",57.99]]},
   {nome:"Iogurte",   categoria:"Laticínios", unidade:"pote",  emoji:"🍶", foto:"fotos/iogurte.png", oferta:false, marcas:[["Danone",3.99],["Nestlé",3.79],["Vigor",4.19]]},
   {nome:"Manteiga 200g",     categoria:"Laticínios", unidade:"pote",  emoji:"🧈", foto:"fotos/margarina.png", oferta:false, marcas:[["Aviação",12.90],["Président",13.90],["Itambé",11.90]]},
 
